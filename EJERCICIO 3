@@ -1,0 +1,17 @@
+def analizar_texto(*args, **kwargs):
+   
+    texto_unido = " ".join(args)
+    
+   
+    if kwargs.get("contar_vocales"):
+        vocales = "aeiouáéíóúAEIOUÁÉÍÓÚ"
+        conteo = sum(1 for letra in texto_unido if letra in vocales)
+        print(f"Cantidad total de vocales: {conteo}")
+        
+    if kwargs.get("contar_palabras"):
+        palabras = texto_unido.split()
+        print(f"Cantidad total de palabras: {len(palabras)}")
+
+
+print("\n--- Analizador de Texto ---")
+analizar_texto("profesora maybellin", "La quiero mucho", contar_vocales=True, contar_palabras=True)

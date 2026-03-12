@@ -1,0 +1,41 @@
+def promedio_notas(estudiantes):
+    if not estudiantes: return 0
+    return sum(e["nota"] for e in estudiantes) / len(estudiantes)
+
+def mejor_estudiante(estudiantes):
+    return max(estudiantes, key=lambda x: x["nota"])
+
+def peor_estudiante(estudiantes):
+    return min(estudiantes, key=lambda x: x["nota"])
+
+def gestion_escolar():
+    lista_estudiantes = []
+    print("\n--- Registro de Estudiantes (Escriba 'fin' para terminar) ---")
+    
+    while True:
+        nombre = input("Nombre: ")
+        if nombre.lower() == "fin": break
+        
+        try:
+            nota = float(input(f"Nota de {nombre}: "))
+            lista_estudiantes.append({"nombre": nombre, "nota": nota})
+        except ValueError:
+            print("Nota inválida. Use números.")
+
+    if lista_estudiantes:
+        print("\n--- REPORTE FINAL ---")
+        print(f"Total estudiantes: {len(lista_estudiantes)}")
+        print(f"Promedio general: {promedio_notas(lista_estudiantes):.2f}")
+        
+        mejor = mejor_estudiante(lista_estudiantes)
+        peor = peor_estudiante(lista_estudiantes)
+        print(f"Mejor estudiante: {mejor['nombre']} ({mejor['nota']})")
+        print(f"Peor estudiante: {peor['nombre']} ({peor['nota']})")
+        
+        
+        ordenados = sorted(lista_estudiantes, key=lambda x: x["nota"])
+        print("\nLista de menor a mayor nota:")
+        for e in ordenados:
+            print(f"- {e['nombre']}: {e['nota']}")
+
+gestion_escolar()

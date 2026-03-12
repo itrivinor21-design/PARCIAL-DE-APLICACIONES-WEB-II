@@ -1,0 +1,15 @@
+def division_segura():
+    print("\n--- División de Enteros ---")
+    try:
+        n1 = int(input("Ingrese el primer número: "))
+        n2 = int(input("Ingrese el segundo número: "))
+        
+        resultado = n1 / n2
+        print(f"Resultado de la división: {resultado}")
+        
+    except ValueError:
+        print("Error: Debe ingresar números enteros.")
+    except ZeroDivisionError:
+        print("Error: No se puede dividir entre cero.")
+
+division_segura()
